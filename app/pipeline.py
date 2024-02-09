@@ -1,6 +1,7 @@
 import os
 from os.path import join, isfile
 import pre_processing
+import llm.llm_processing
 
 
 def perform_pipeline(jobs_dir, cv):
@@ -10,3 +11,5 @@ def perform_pipeline(jobs_dir, cv):
             lines = f.readlines()
             text = "".join(lines)
             pre_processing.PreProcessor(text)
+            llm.llm_processing.LlmProcessor(text)
+

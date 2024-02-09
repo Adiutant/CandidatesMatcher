@@ -14,7 +14,11 @@ def prompt_summarize(text):
 class LlmProcessor:
     def __init__(self, file_data):
         prompt = prompt_summarize(file_data)
-        creds = os.environ.get('GIGACHAT_API_KEY')
+        print(prompt)
+        creds = "NGRiOTkxNWUtMWI0MS00Yzk2LTkxMzQtZWYwMDJlNDI1ZTc4OmY0MmFhNDEzLTVkN2YtNGJlOC1iODg4LTA1NGU2ZmU3NTdjZg==" #os.getenv("GIGACHAT_API_KEY")#
+        if creds is None:
+            print("Set env GIGACHAT_API_KEY to your api key")
+            exit(1)
         with GigaChat(credentials=creds, verify_ssl_certs=False) as giga:
             response = giga.chat(prompt)
             print(response.choices[0].message.content)
