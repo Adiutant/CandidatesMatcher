@@ -22,6 +22,7 @@ def perform_pipeline(jobs_dir, cv):
         print(topics.skills_processed)
         print("Дополнительно")
         print(topics.extra_processed)
+
     only_files = [jobs_dir + f for f in os.listdir(jobs_dir) if isfile(join(jobs_dir, f))]
     for file in only_files:
         with open(file) as f:
@@ -43,5 +44,4 @@ def perform_pipeline(jobs_dir, cv):
             print(topics.skills_processed)
             print("Дополнительно")
             print(topics.extra_processed)
-
 
