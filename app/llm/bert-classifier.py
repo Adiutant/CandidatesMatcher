@@ -9,6 +9,16 @@ class BertClassifier:
         self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
         self.max_len = 512
 
+    # sentence similarity https://huggingface.co/cointegrated/rubert-tiny2
+    # embeding @ embeding.T = similarity
+    def embed_bert_cls(self, text, model, tokenizer):
+        t = tokenizer(self, text, padding=True, truncation=True, return_tensors='pt')
+        with torch.no_grad():
+            model_output = model(**{k: v.to(model.device) for k, v in t.items()})
+        embeddings = model_output.last_hidden_state[:, 0, :]
+        embeddings = torch.nn.functional.normalize(embeddings)
+        return embeddings[0].cpu().numpy()
+
     def predict(self, text):
         encoding = self.tokenizer.encode_plus(
             text,
