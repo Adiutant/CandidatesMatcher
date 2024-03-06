@@ -3,6 +3,7 @@ from os.path import join, isfile
 import llm.llm_processing
 import topics_data
 
+
 def perform_pipeline(jobs_dir, cv):
     with open(cv) as f:
         lines = f.readlines()
@@ -44,4 +45,4 @@ def perform_pipeline(jobs_dir, cv):
             print(topics.skills_processed)
             print("Дополнительно")
             print(topics.extra_processed)
-
+            # todo classification
