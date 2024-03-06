@@ -12,10 +12,14 @@ def extract_info_by_title(text, title):
 
 
 class TopicsData:
+    # raw topics
+
     experience = None
     education = None
     skills = None
     extra = None
+
+    # stemmed topics
 
     experience_processed = None
     education_processed = None
