@@ -1,5 +1,5 @@
 import torch
-from transformers import BertTokenizer, AutoModel, AutoTokenizer, BertForSequenceClassification
+from transformers import AutoModel, AutoTokenizer
 
 
 class BertClassifier:
