@@ -30,5 +30,7 @@ def perform_pipeline_without_llm_processing(jobs_file, cv_dir):
             if similarity > max_similarity and similarity > 0.70:
                 match = job
         with open("result", 'a') as f:
-            f.write(file + '\n' + match + '\n')
+            match_splited = match.split('\n')
+            match_splited = [i for i in match_splited if i]
+            f.write(file + '\n' + match_splited[0] + '\n')
             f.close()
